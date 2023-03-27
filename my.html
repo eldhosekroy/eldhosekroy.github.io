@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Path to Video</title>
+    <style>
+      body {
+        background-color: #40e0d0;
+        font-family: Arial, sans-serif;
+        background-image: radial-gradient(circle, #fff 3%, transparent 3%),
+          radial-gradient(circle, #fff 3%, transparent 3%);
+        background-position: 0 0, 50px 50px;
+        background-size: 20px 20px;
+        animation: particles 5s ease-in-out infinite alternate, change-color 6s ease-in-out infinite;
+      }
+
+      @keyframes particles {
+        0% {
+          background-position: 0 0, 50px 50px;
+        }
+        100% {
+          background-position: -50px -50px, 0 0;
+        }
+      }
+
+      @keyframes change-color {
+        0% {
+          background-color: #000000;
+        }
+        20% {
+          background-color: #0b103b;
+        }
+        40% {
+          background-color: #172136;
+        }
+        60% {
+          background-color: #201e2a;
+        }
+        80% {
+          background-color: #201930;
+        }
+        100% {
+          background-color: #2E2E2E;
+        }
+      }
+
+      .animated-heading {
+  animation: bounce-in 1s linear infinite, color-change 9s ease-in-out infinite;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  font-size: 3em;
+  color: red;
+}
+
+
+@keyframes color-change {
+  0% {color: red;}
+  33.33% {color: green;}
+  66.66% {color: blue;}
+  100% {color: red;}
+}
+
+@keyframes bounce-in {
+  0% {transform: translateY(-20px);}
+  60% {transform: translateY(50px);}
+  80% {transform: translateY(-20px);}
+  100% {transform: translateY(0px);}
+}
+
+
+      button {
+        display: block;
+        margin: 50px auto;
+        padding: 10px 20px;
+        font-size: 24px;
+        border-radius: 5px;
+        color: #fff;
+        background-color: #ff8c00;
+        border: none;
+        cursor: pointer;
+        animation: pulse 1.5s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="animated-heading" >Click the button to watch the video</h1>
+    <button onclick="openVideo()">Watch Video</button>
+
+    <script>
+      function openVideo() {
+        const url = "https://youtu.be/dQw4w9WgXcQ"; // replace with your video URL
+        if (confirm("Do you want to open the video in a new tab?")) {
+          window.open(url, "_blank");
+        }else{
+            window.open(url,"_blank");
+        }
+      }
+    </script>
+  </body>
+</html>
