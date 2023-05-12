@@ -53,6 +53,8 @@ body {
     background-color: rgba(255, 255, 255, 0.2);
     color: #ffffff;
     transition: background-color 0.3s;
+    margin-right: 50px;
+    padding-right: 1px;
   }
 
   .form-group input[type="text"]:focus,
