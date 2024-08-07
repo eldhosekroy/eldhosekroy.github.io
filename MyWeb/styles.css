@@ -1,0 +1,323 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    max-width: 1480px;
+    width: 100%;
+    height: 95vh;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #f8f8f8;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    border-radius: 10px 0 0 10px;
+}
+
+.logo h1 {
+    color: #e74c3c;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 20px 0;
+    font-size: 18px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+nav ul li a i {
+    margin-right: 10px;
+}
+
+nav ul li a:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+nav ul li.active a {
+    color: #e74c3c;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.content {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+}
+
+.intro {
+    text-align: left;
+    max-width: 50%;
+}
+
+.intro .name {
+    font-family: 'Cursive';
+    color: #e74c3c;
+}
+
+.intro .highlight {
+    color: #e74c3c;
+}
+
+.intro p {
+    margin: 20px 0;
+    font-size: 18px;
+}
+
+.hire-me {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.photo img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-left: 50px;
+}
+
+/* Dark mode toggle (optional) */
+.dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+/* Additional CSS for the About page */
+.about {
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+.about h2 {
+    font-size: 36px;
+    color: #e74c3c;
+    margin-bottom: 20px;
+}
+
+.about p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Additional CSS for the Services page */
+.services {
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.services h2 {
+    font-size: 36px;
+    color: #e74c3c;
+    margin-bottom: 20px;
+}
+
+.service-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.service-item {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.service-item i {
+    font-size: 50px;
+    color: #e74c3c;
+    margin-bottom: 10px;
+}
+
+.service-item h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.service-item p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.service-item:hover {
+    transform: scale(1.05);
+}
+
+/* Additional CSS for the Portfolio page */
+.portfolio {
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.portfolio h2 {
+    font-size: 36px;
+    color: #e74c3c;
+    margin-bottom: 20px;
+}
+
+.portfolio-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for a 2x2 grid */
+    gap: 20px;
+}
+
+.portfolio-item {
+    background-color: #f8f8f8;
+    padding: 10px; /* Adjust padding if needed */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 200px; /* Fixed height to ensure uniformity */
+    object-fit: cover; /* Ensures images cover the box without distortion */
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.portfolio-item h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.portfolio-item p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.portfolio-item:hover {
+    transform: scale(1.05);
+}
+
+/* Additional CSS for the Contact page */
+.contact {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.contact h2 {
+    font-size: 36px;
+    color: #e74c3c;
+    margin-bottom: 20px;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px; /* Increased gap between form and info */
+}
+
+.contact-form {
+    flex: 1;
+    max-width: 600px;
+    margin-right: 20px; /* Added margin to the right */
+}
+
+.contact-form label {
+    font-size: 18px;
+    color: #333;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 15px; /* Added margin between fields */
+}
+
+.contact-form button {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #c0392b;
+}
+
+.contact-info {
+    flex: 1;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.contact-item {
+    font-size: 18px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-item i {
+    font-size: 24px;
+    color: #e74c3c;
+}
+
+.contact-item a {
+    color: #333;
+    text-decoration: none;
+}
+
+.contact-item a:hover {
+    text-decoration: underline;
+}
+
