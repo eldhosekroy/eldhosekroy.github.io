@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Jug Problem</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Water Jug Problem</h1>
+        <div class="jugs">
+            <div class="jug-section">
+                <h2>3 Liter Jug</h2>
+                <div class="jug" id="jug3">
+                    <div class="water" id="water3"></div>
+                </div>
+                <div class="controls">
+                    <button onclick="fillJug(3)">Fill 3L</button>
+                    <button onclick="emptyJug(3)">Empty 3L</button>
+                    <button onclick="transfer(3, 4)">Transfer to 4L</button>
+                </div>
+            </div>
+            <div class="jug-section">
+                <h2>4 Liter Jug</h2>
+                <div class="jug" id="jug4">
+                    <div class="water" id="water4"></div>
+                </div>
+                <div class="controls">
+                    <button onclick="fillJug(4)">Fill 4L</button>
+                    <button onclick="emptyJug(4)">Empty 4L</button>
+                    <button onclick="transfer(4, 3)">Transfer to 3L</button>
+                </div>
+            </div>
+        </div>
+        <div id="message"></div>
+    </div>
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <h2>Congratulations!</h2>
+            <p>You have won the game.</p>
+            <button onclick="closePopup()">OK</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
