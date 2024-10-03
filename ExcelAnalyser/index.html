@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Sheet Analyser</title>
+    <style>
+ /* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('https://imgs.search.brave.com/rWWx-A1EVJSy0SWJxGWBI0XycP6nECQgkDNYu-YeoBc/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9uY2Vy/Yy5hYy5pbi9jb250/ZW50L2ltZy9uZWhy/dS1oLWFidC5qcGVn');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Overlay for Blur Effect */
+.blur-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+/* Shared Box Styles */
+.upload-box, .details-box {
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    text-align: center;
+    box-sizing: border-box; /* Ensures padding is included in width */
+}
+
+/* Input Fields */
+.upload-box input[type="file"], .details-box input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 16px;
+    box-sizing: border-box; /* Prevents overflow */
+}
+
+/* Button Styles */
+.upload-box button, .details-box button {
+    width: 100%;
+    padding: 10px;
+    background-color: orange;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.upload-box button:hover, .details-box button:hover {
+    background-color: #e69500;
+}
+
+/* Text Styles */
+h2, h3 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* Student Details Styling */
+#student-details {
+    text-align: left;
+    margin-top: 20px;
+    color: white;
+}
+
+/* Preformatted Text Box in Details */
+.details-box pre {
+    text-align: left;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+    box-sizing: border-box;
+    width: 100%; /* Prevent overflow */
+}
+
+    </style>
+</head>
+<body>
+
+<div class="blur-bg"></div>
+
+<div class="upload-box">
+    <h2>Upload Data File</h2>
+    <input type="file" id="file-upload" accept=".xlsx">
+    <button type="button" onclick="handleUpload()">Upload</button>
+</div>
+
+<div class="details-box" style="display: none;" id="details-box">
+    <h2>Details</h2>
+    <input type="text" id="student-query" placeholder="Enter Name or ID">
+    <button type="button" onclick="searchStudent()">Search</button>
+
+    <div id="student-details"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+<script>
+    let studentData = [];
+
+    // Function to handle file upload and parsing
+    function handleUpload() {
+        const fileInput = document.getElementById('file-upload');
+        const file = fileInput.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const data = new Uint8Array(e.target.result);
+                const workbook = XLSX.read(data, { type: 'array' });
+                const sheetName = workbook.SheetNames[0];
+                const sheet = workbook.Sheets[sheetName];
+                const rawData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+                
+                // Process raw data
+                const headers = rawData[0];
+                for (let i = 1; i < rawData.length; i++) {
+                    const student = {};
+                    headers.forEach((header, index) => {
+                        student[header] = rawData[i][index];
+                    });
+                    studentData.push(student);
+                }
+
+                alert('File uploaded and parsed successfully!');
+                document.querySelector('.upload-box').style.display = 'none';
+                document.getElementById('details-box').style.display = 'block';
+            };
+            reader.readAsArrayBuffer(file);
+        } else {
+            alert('Please select a file!');
+        }
+    }
+
+    // Function to search for student details
+    function searchStudent() {
+        const query = document.getElementById('student-query').value.toLowerCase();
+        const result = studentData.find(student => {
+            return Object.values(student).some(val => String(val).toLowerCase().includes(query));
+        });
+
+        const detailsDiv = document.getElementById('student-details');
+        detailsDiv.innerHTML = ''; // Clear previous results
+        if (result) {
+            detailsDiv.innerHTML = `<h3>Found Data:</h3>`;
+            Object.entries(result).forEach(([key, value]) => {
+                if (value) { // Only display non-empty values
+                    detailsDiv.innerHTML += `<p><strong>${key}:</strong> ${value}</p>`;
+                }
+            });
+        } else {
+            detailsDiv.innerHTML = `<p>No data found with the query: ${query}</p>`;
+        }
+    }
+</script>
+
+
+</body>
+</html>
